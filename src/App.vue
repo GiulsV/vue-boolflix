@@ -1,19 +1,34 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HeaderCompVue 
+     @sendToApp="getSearch($event)" />
+    <MainCompVue :arrayFilms="filmList"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HeaderCompVue from './components/HeaderComp.vue';
+import MainCompVue from './components/MainComp.vue';
+
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
+    HeaderCompVue,
+    MainCompVue
+  },
+  data() {
+    return {
+      filmList: [],
+    }
+  },
+  methods: {
+    getSearch(value) {
+      this.filmList = value;
+      console.log(this.filmList);
+    },
   }
-}
+};
 </script>
 
 <style lang="scss">
