@@ -16,11 +16,15 @@ export default {
     },
     data() {
         return {
-            filmList: [],
+            filmList: {
+                film: [],
+                series: []
+            },
         }
     },
     methods: {
         setSearch(value) {
+
             this.filmList = value;
             this.sendSearch();
         },

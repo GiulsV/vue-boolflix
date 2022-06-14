@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <HeaderCompVue 
-      @sendToApp="getSearch($event)" 
-     />
+    <HeaderCompVue
+      @sendToApp="getSearch($event)"
+    />
     <MainCompVue 
       :arrayFilms="filmList"
     />
@@ -22,7 +22,10 @@ export default {
   },
   data() {
     return {
-      filmList: [],
+      filmList: {
+        film: [],
+        series: []
+      },
     }
   },
   methods: {
