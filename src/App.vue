@@ -1,14 +1,17 @@
 <template>
   <div id="app">
     <HeaderCompVue 
-     @sendToApp="getSearch($event)" />
-    <MainCompVue :arrayFilms="filmList"/>
+      @sendToApp="getSearch($event)" 
+     />
+    <MainCompVue 
+      :arrayFilms="filmList"
+    />
   </div>
 </template>
 
 <script>
-import HeaderCompVue from './components/HeaderComp.vue';
-import MainCompVue from './components/MainComp.vue';
+import HeaderCompVue from '@/components/HeaderComp.vue';
+import MainCompVue from '@/components/MainComp.vue';
 
 
 export default {
@@ -31,7 +34,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

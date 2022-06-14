@@ -1,18 +1,21 @@
 <template>
   <main>
-    <ul v-for="(film, index) in arrayFilms" :key='index'>
-          <li>Titolo: {{film.title}}</li>
-          <li>Titolo Originale: {{film.original_title}}</li>
-          <li>Lingua Originale: {{film.original_language}}</li>
-          <li>Voto: {{film.vote_average}}</li>
-    </ul>
+    <FilmComp 
+        v-for="(film, index) in arrayFilms"
+        :key=index
+        :film="film"
+    />
   </main>
 </template>
 
 <script>
+import FilmComp from '@/components/FilmComp.vue';
 
 export default {
     name: "MainCompVue",
+    components: {
+        FilmComp,
+    },
     props: {
         arrayFilms: Array,
     },
@@ -31,7 +34,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-ul{
-    list-style: none;
-}
+
 </style>
