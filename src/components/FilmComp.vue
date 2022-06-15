@@ -9,7 +9,7 @@
             <li class="film-info"><span class="label">Lingua originale: </span> <img class="flag" :src="getImgUrl()" alt=""></li>
             <li class="film-info">
                 <span class="label">Voto: </span>
-                <i v-for="(star,index) in getVoteStar(vote)" :key=index class="fa-solid fa-star rate"></i>
+                <i v-for="(vote,index) in getVoteStar(vote)" :key=index class="fa-solid fa-star rate"></i>
             </li>
             <li class="film-info"> <span class="label">Descrizione: </span> <p>{{overview}}</p></li>
         </div>       
@@ -53,7 +53,7 @@ export default {
         },
         getVoteStar(value) {
             if(value != 0) {
-                return Math.ceil(((Math.ceil(value)*5)/10));
+                return Math.round(((Math.round(value)*5)/10));
             }
             else{
                 return 1;
