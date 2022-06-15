@@ -5,7 +5,8 @@
         <li>Titolo:{{title}}</li>
         <li>Titolo Originale:{{originalTitle}}</li>
         <li>Lingua:<img :src="getImgUrl()" alt="flag" id="flag"></li>
-        <li>Voto:{{vote}}</li>
+        <li>Voto:{{getVoteStar(vote)}}</li>
+        <!-- <i class="fas fa-star"></i> -->
       </ul>
   </div>
 </template>
@@ -40,6 +41,12 @@ export default {
                     return require("../assets/img/de.svg");
                 default:
                     return require("../assets/img/xx.svg");
+            }
+            
+        },
+        getVoteStar(value) {
+            if(value != 0) {
+                return Math.ceil(((Math.ceil(value)*5)/10));
             }
             
         }
