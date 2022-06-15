@@ -25,12 +25,13 @@ export default {
     methods: {
         sendInput() {
             if(this.searchText.trim() != "") {
-                axios.get(this.filmApiQuery+this.searchText)       //prima chiamata: film
+                axios.get(this.filmApiQuery+this.searchText)       //film
                 .then(res => {
                     
                     this.filmList.firstSearch = true;
                     this.filmList.film = res.data.results;
-                    axios.get(this.seriesApiQuery+this.searchText)  //seconda chiamata: serie TV
+                    
+                    axios.get(this.seriesApiQuery+this.searchText)  //serie TV
                         .then(res => {
                             this.filmList.series = res.data.results;
                             this.$emit("sendSearch", this.filmList);
@@ -57,19 +58,41 @@ export default {
         display: flex;
         align-items: center;
         height: 100%;
+        // input {
+        //     width: 300px;
+        //     height: 40%;
+        //     background-color: rgba(0,0,0,0);
+        //     border: 1px solid rgb(101, 109, 224);
+        //     outline: none;
+        //     color: white;
+        //     padding: 0 1rem;
+        // }
+
         input {
-            width: 300px;
-            height: 40%;
-            background-color: rgba(0,0,0,0);
-            border: 1px solid white;
-            outline: none;
-            color: white;
-            padding: 0 1rem;
+        font-family: sans-serif;
+        padding: 0 1rem;
+        border: 3px solid white;
+        color: white;
+        text-indent: 15px;
+        outline: none;
+        border-radius: 4px;
+        background: none;
+        border: 1px solid rgb(101, 109, 224);
+        transition: .3s;
+        width: 300px;
+        height: 40%;
         }
+
+        input:focus {
+            box-shadow: 0 0 5px rgb(120, 128, 240),
+                        0 0 15px rgb(120, 128, 240);
+            border: 1px solid rgb(120, 128, 240);
+        }
+
         button {
             height: 40%;
             border: none;
-            background-color: red;
+            background-color: rgb(101, 109, 224);
             text-transform: uppercase;
             color: white;
             font-size: 0.8rem;

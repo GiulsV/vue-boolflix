@@ -3,7 +3,7 @@
     <div class="main-container">
         <div v-if="arrayFilms.film.length > 0" class="films-container">
 
-            <h2 class="section" v-if="arrayFilms.film">Film</h2>
+            <h2 class="program" v-if="arrayFilms.film">Film</h2>
 
             <ul>
                 <FilmComp
@@ -18,13 +18,13 @@
                 />
             </ul>
         </div>
-        <div v-else-if="arrayFilms.firstSearch">
-            <h2 class="section">Non sono stati trovati film</h2>
+        <div v-else-if="arrayFilms.firstSearch" class="not_found">
+            <h2 >Non sono stati trovati film</h2>
         </div>
     
         <div v-if="arrayFilms.series.length > 0" class="series-container">
 
-            <h2 class="section" v-if="arrayFilms.series">Serie TV</h2>
+            <h2 class="program" v-if="arrayFilms.series">Serie TV</h2>
             <ul>
                 <FilmComp
                     v-for="(serie, index) in arrayFilms.series"
@@ -38,8 +38,8 @@
                 />
             </ul>
         </div>
-        <div v-else-if="arrayFilms.firstSearch">
-            <h2 class="section">Non sono state trovate serie TV</h2>
+        <div v-else-if="arrayFilms.firstSearch" class="not_found">
+            <h2 >Non sono state trovate serie TV</h2>
         </div>
     </div>  
   </main>
@@ -72,24 +72,36 @@ export default {
         width: 100%;
         height: calc(100vh - 70px);
         margin: auto;
-        padding: 2rem 0;
-        background-color: gray;
-        .films-container, .series-container {
+        // padding: 2rem 2rem;
+        background-color: rgb(41, 41, 46);
+        color: rgb(101, 109, 224);
+        letter-spacing: 2px;
+        letter-spacing: 2px;
+        .films-container, 
+        .series-container {
+            
+            background-color: rgb(41, 41, 46);
+            padding: 1.2rem 1.2rem;
             
             ul {
                 display: flex;
                 flex-wrap: wrap;
-                margin: 1rem 0 4rem 0;
+                padding: 1rem 0 2rem 0;
                 gap: 1.5rem;
                 list-style-type: none;
+                height: 100%;
             }
         }
-        .section {
+        .program {
             margin-left: 50px;
-                font-size: 2rem;
-                color: white;
-                letter-spacing: 2px;
-            }
+            font-size: 2rem;
+
+        }
+        .not_found{
+            padding: 90px 0 0 100px ;
+            font-size: 1.5rem;
+
+        }
     }
 
 </style>

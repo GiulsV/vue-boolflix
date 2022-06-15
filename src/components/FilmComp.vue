@@ -72,17 +72,16 @@ export default {
         overflow: hidden;
         transition: all 0.2s;
         &:hover {
-            outline: 3px solid white;
-            outline-offset: 7px;
+            outline: 2px solid white;
+            // outline-offset: 7px;
             cursor: pointer;
         }
         &:hover .poster {
-            transform: rotate3d(0, 1, 0, 180deg);
+            // transform: rotate3d(0, 1, 0, 180deg);
             filter: brightness(30%);
         }
         &:hover .info-container {
             opacity: 1;
-            background-color: blue;
         }
         li {
             height: 100%;
@@ -95,12 +94,14 @@ export default {
         li.film-info {
             margin: 0.4rem 0;
             p {
-                height: 20vh;
+                height: 60vh;
                 overflow: scroll;
                 margin-top: 5px;
             }
             p::-webkit-scrollbar {
                 display: none;
+            }
+            p{
                 -ms-overflow-style: none;
                 scrollbar-width: none;
             }
@@ -112,11 +113,14 @@ export default {
         }
         .info-container {
             position: absolute;
-            top: 1rem;
-            left: 0.7rem;
-            color: white;
+            top: 0;
+            left: 0;
             opacity: 0;
-            transition: all 1.3s;
+            transition: .5s ease;
+            background-color: rgb(54, 54, 65);
+            color: rgb(221, 217, 217);
+            padding: 1rem 0.7rem;
+            width:100%;
             .label {
                 text-transform: uppercase;
                 font-size: 1rem;

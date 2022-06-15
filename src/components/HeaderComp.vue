@@ -55,11 +55,10 @@ export default {
             width: 90%;
             height: 70px;
             h1 {
-                color: red;
+                color: rgb(101, 109, 224);
                 font-size: 3.5rem;
                 letter-spacing: 3px;
             }
-        }
-        
+        }   
     }
 </style>
