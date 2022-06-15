@@ -1,8 +1,11 @@
 <template>
   <header>
-      <SearchComp
-        @sendSearch="setSearch($event)"
-      />
+      <div class="header-container">
+        <h1>Boolflix</h1>
+        <SearchComp
+            @sendSearch="setSearch($event)"
+        />
+      </div>
   </header>
 </template>
 
@@ -18,7 +21,8 @@ export default {
         return {
             filmList: {
                 film: [],
-                series: []
+                series: [],
+                firstSearch: false
             },
         }
     },
@@ -36,9 +40,26 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    header {
-        width: 100%;
-        height: 80px;
-        border-bottom: 1px solid black;
+     header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgb(0, 0, 0);
+        position: sticky;
+        z-index: 100;
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: auto;
+            width: 90%;
+            height: 70px;
+            h1 {
+                color: red;
+                font-size: 3.5rem;
+                letter-spacing: 3px;
+            }
+        }
+        
     }
 </style>

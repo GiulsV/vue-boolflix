@@ -1,6 +1,6 @@
 <template>
   <div class="search-container">
-      <input type="text" v-model="searchText">
+      <input @keyup.enter="sendInput()" type="text" v-model="searchText">
       <button @click="sendInput()">Cerca</button>
   </div>
 </template>
@@ -17,16 +17,20 @@ export default {
             searchText: "",
             filmList: {
                 film: [],
-                series: []
+                series: [],
+                 firstSearch: false
             },
         }
     },
     methods: {
         sendInput() {
-            axios.get(this.filmApiQuery+this.searchText)       //film
+            if(this.searchText.trim() != "") {
+                axios.get(this.filmApiQuery+this.searchText)       //prima chiamata: film
                 .then(res => {
+                    
+                    this.filmList.firstSearch = true;
                     this.filmList.film = res.data.results;
-                    axios.get(this.seriesApiQuery+this.searchText)  //serie TV
+                    axios.get(this.seriesApiQuery+this.searchText)  //seconda chiamata: serie TV
                         .then(res => {
                             this.filmList.series = res.data.results;
                             this.$emit("sendSearch", this.filmList);
@@ -34,10 +38,45 @@ export default {
                         .catch(err => console.log(err))
                 })
                 .catch(err => console.log(err))
+            }
+            else{
+                this.filmList = {
+                    film: [],
+                    series: [],
+                    firstSearch: false
+                };
+                this.$emit("sendSearch", this.filmList);
+            }
         }
     }
 }
 </script>
 
 <style lang="scss" scoped>
+    .search-container {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        input {
+            width: 300px;
+            height: 40%;
+            background-color: rgba(0,0,0,0);
+            border: 1px solid white;
+            outline: none;
+            color: white;
+            padding: 0 1rem;
+        }
+        button {
+            height: 40%;
+            border: none;
+            background-color: red;
+            text-transform: uppercase;
+            color: white;
+            font-size: 0.8rem;
+            cursor: pointer;
+            padding: 5px;
+            margin-left: 5px;
+        }
+    }
+
 </style>
