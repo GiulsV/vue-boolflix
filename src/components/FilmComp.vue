@@ -1,10 +1,11 @@
 <template>
   <div class="card-container">
       <ul>
-          <li>Titolo:{{title}}</li>
-          <li>Titolo Originale:{{originalTitle}}</li>
-          <li>Lingua:<img :src="getImgUrl()" alt=""></li>
-          <li>Voto:{{vote}}</li>
+        <li><img :src="basicImageURL + poster" alt="poster" id="poster"></li>
+        <li>Titolo:{{title}}</li>
+        <li>Titolo Originale:{{originalTitle}}</li>
+        <li>Lingua:<img :src="getImgUrl()" alt="flag" id="flag"></li>
+        <li>Voto:{{vote}}</li>
       </ul>
   </div>
 </template>
@@ -14,9 +15,11 @@ export default {
     name: "FilmComp",
      data() {
         return {  
+            basicImageURL: "https://image.tmdb.org/t/p/w342",
         }
     },
     props: {
+        poster: String,
         title: String,
         originalTitle: String,
         language: String,
@@ -49,7 +52,7 @@ ul{
     list-style: none;
 }
 
-img{
+#flag{
     width: 90px;
     height: 60px;
 }
