@@ -5,8 +5,11 @@
         <li>Titolo:{{title}}</li>
         <li>Titolo Originale:{{originalTitle}}</li>
         <li>Lingua:<img :src="getImgUrl()" alt="flag" id="flag"></li>
-        <li>Voto:{{getVoteStar(vote)}}</li>
-        <!-- <i class="fas fa-star"></i> -->
+        <li>Voto:<i 
+              v-for="(star,index) in getVoteStar(vote)"
+              :key=index class="fa-solid fa-star">
+            </i>
+        </li>
       </ul>
   </div>
 </template>
