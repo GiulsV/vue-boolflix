@@ -56,7 +56,7 @@ export default {
                 return Math.ceil(((Math.ceil(value)*5)/10));
             }
             else{
-                return 0;
+                return 1;
             }
             
         }
@@ -82,6 +82,7 @@ export default {
         }
         &:hover .info-container {
             opacity: 1;
+            
         }
         li {
             height: 100%;
@@ -94,16 +95,14 @@ export default {
         li.film-info {
             margin: 0.4rem 0;
             p {
-                height: 60vh;
-                overflow: scroll;
+                height: 43vh;
+                overflow-y: scroll;
                 margin-top: 5px;
+                -ms-overflow-style: none;
+                scrollbar-width: none;
             }
             p::-webkit-scrollbar {
                 display: none;
-            }
-            p{
-                -ms-overflow-style: none;
-                scrollbar-width: none;
             }
         }
         
