@@ -2,9 +2,11 @@
   <div id="app">
     <HeaderCompVue
       @sendToApp="getSearch($event)"
+      @sendGenre="getChoice($event)"
     />
     <MainCompVue 
       :arrayFilms="filmList"
+      :choice="idGenreChoiced"
     />
   </div>
 </template>
@@ -26,13 +28,16 @@ export default {
         film: [],
         series: []
       },
+        idGenreChoiced: null,
     }
   },
   methods: {
     getSearch(value) {
       this.filmList = value;
-      console.log(this.filmList);
     },
+    getChoice(value) {
+      this.idGenreChoiced = value;
+    }
   }
 };
 </script>

@@ -3,7 +3,7 @@
     <div class="main-container">
         <div v-if="arrayFilms.film.length > 0" class="films-container">
 
-            <h2 class="program" v-if="arrayFilms.film">Film</h2>
+            <h2 @click="test()" class="program" v-if="arrayFilms.film">Film</h2>
 
             <ul>
                 <FilmComp
@@ -15,6 +15,11 @@
                     :vote="film.vote_average"
                     :poster="film.poster_path"
                     :overview="film.overview.length > 0 ? film.overview : 'No Description'"
+                    :id="film.id"
+                    :type="`movie`"
+                    :filmGenres="film.genre_ids"
+
+                    :genreChoice="choice"
                 />
             </ul>
         </div>
@@ -35,6 +40,11 @@
                     :vote="serie.vote_average"
                     :poster="serie.poster_path"
                     :overview="serie.overview.length > 0 ? serie.overview : 'No Description'"
+                    :id="serie.id"
+                    :type="`tv`"
+                    :filmGenres="serie.genre_ids"
+
+                    :genreChoice="choice"
                 />
             </ul>
         </div>
@@ -55,10 +65,16 @@ export default {
     },
     props: {
         arrayFilms: Object,
+        choice: Number
     },
     data() {
         return {
             
+        }
+    },
+        methods: {
+        test() {
+            console.log(this.arrayFilms.film);
         }
     },
     computed: {
@@ -72,7 +88,6 @@ export default {
         width: 100%;
         height: calc(100vh - 70px);
         margin: auto;
-        // padding: 2rem 2rem;
         background-color: rgb(41, 41, 46);
         color: rgb(101, 109, 224);
         letter-spacing: 2px;
